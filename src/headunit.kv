@@ -1,0 +1,25 @@
+#:kivy 1.0.9
+
+<HeadunitWidget>:
+    canvas:
+        Color:
+            rgb: .2, .2, .2
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        font_name: 'assets/fonts/Lato-Black'
+        font_size: 160
+        center_x: root.width / 2
+        center_y: (root.height / 2) + 72
+        text: '[color=f0f0f0]' + str(root.time) + '[/color]'
+        markup: True
+
+    Label:
+        font_name: 'assets/fonts/Lato-Light'
+        font_size: 36
+        center_x: root.width / 2
+        center_y: (root.height / 2) - 24
+        text: '[color=f0f0f0]' + str(root.date) + '[/color]'
+        markup: True
