@@ -7,6 +7,8 @@ from kivy.clock import Clock
 from kivy.core.window import Window
 from kivy.network.urlrequest import UrlRequest
 
+key = ''
+
 class HeadunitWidget(Widget):
     time = ObjectProperty(None)
     date = ObjectProperty(None)
