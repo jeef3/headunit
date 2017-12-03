@@ -3,15 +3,11 @@
 <HeadunitWidget>:
     canvas:
         Color:
-            rgb: 1, 0, 0
+            rgb: 1, 1, 1
         Rectangle:
-            pos: self.pos
-            size: self.size
-        Color:
-            rgb: .2, .2, .2
-        Rectangle:
-            pos: self.x + 10, self.y + 10
-            size: self.width - 20, self.height - 20
+            pos: self.x, self.y
+            size: self.width, self.height
+            source: 'assets/background.jpg'
 
     Label:
         font_name: 'assets/fonts/Lato-Black'
@@ -23,20 +19,8 @@
 
     Label:
         font_name: 'assets/fonts/Lato-Regular'
-        font_size: dp(36)
+        font_size: dp(30)
         center_x: root.width / 2
         center_y: (root.height / 2) - dp(24)
         text: '[color=f0f0f0]' + str(root.date) + '[/color]'
         markup: True
-
-    Label:
-        font_size: dp(16)
-        center_x: root.width / 2
-        bottom: 0
-        text: root.screen_resolution
-
-    Label:
-        font_size: dp(16)
-        center_x: root.width / 2
-        center_y: dp(64)
-        text: root.temp

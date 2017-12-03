@@ -5,23 +5,24 @@ from kivy.uix.widget import Widget
 from kivy.properties import StringProperty, ObjectProperty
 from kivy.clock import Clock
 from kivy.core.window import Window
+from kivy.core.image import Image as CoreImage
 from kivy.network.urlrequest import UrlRequest
 
-key = ''
+Window.size = (720, 480)
+
+key = 'cbb50b1f23a2230b10ccf6a3d8504fb0'
 
 class HeadunitWidget(Widget):
     time = ObjectProperty(None)
     date = ObjectProperty(None)
-    screen_resolution = StringProperty('')
-    temp = StringProperty('')
+    # temp = StringProperty('')
 
     def update(self, dt):
         self.time = time.strftime('%H:%M')
         self.date = time.strftime('%A, %d %B')
-        self.screen_resolution = 'Screen: ' + str(Window.size)
 
-    def got_weather(self, request, data):
-        self.temp = str(data['main']['temp'])
+    # def got_weather(self, request, data):
+    #     self.temp = str(data['main']['temp'])
 
 
 class HeadunitApp(App):
