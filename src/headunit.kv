@@ -1,24 +1,41 @@
 #:kivy 1.0.9
 
+<TimeAndDate>:
+    canvas:
+        Scale:
+            origin: self.center_x, self.center_y
+            x: self.scale
+            y: self.scale
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(10)
+        pos: root.x, root.y + root.height - dp(325)
+        size: root.width, dp(200)
+
+        Label:
+            font_name: 'assets/fonts/Lato-Black'
+            font_size: '160dp'
+            text: '[color=ffffff]' + str(root.time) + '[/color]'
+            markup: True
+
+        Label:
+            font_name: 'assets/fonts/Lato-Regular'
+            font_size: '36dp'
+            text: '[color=f0f0f0]' + str(root.date) + '[/color]'
+            markup: True
+
+
 <HeadunitWidget>:
+    time_and_date: time_and_date
+
     canvas:
         Rectangle:
             pos: self.x, self.y
             size: self.width, self.height
             source: 'assets/background.jpg'
 
-    Label:
-        font_name: 'assets/fonts/Lato-Black'
-        font_size: dp(160)
-        center_x: root.width / 2
-        center_y: (root.height / 2) + dp(72)
-        text: '[color=f0f0f0]' + str(root.time) + '[/color]'
-        markup: True
-
-    Label:
-        font_name: 'assets/fonts/Lato-Regular'
-        font_size: dp(30)
-        center_x: root.width / 2
-        center_y: (root.height / 2) - dp(24)
-        text: '[color=f0f0f0]' + str(root.date) + '[/color]'
-        markup: True
+    TimeAndDate:
+        id: time_and_date
+        pos: root.x, root.y
+        size: root.width, root.height
