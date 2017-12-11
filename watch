@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+if [ ! $(which fswatch) ]; then
+  echo "You need to install fswatch to use watch"
+  exit 1
+fi
+
+./start
+
+fswatch -o src | \
+  xargs -n1 './start'

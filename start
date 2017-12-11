@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ps | grep '[s]rc/main.py$' | awk '{system("kill "$1)}'
+python3 src/main.py
