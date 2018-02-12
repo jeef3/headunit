@@ -1,5 +1,13 @@
 #:kivy 1.0.9
 
+<BtConnection>:
+    canvas:
+        Rectangle:
+            pos: self.x, self.y
+            size: self.width, self.height
+            source: 'assets/wifi.png'
+
+
 <TimeAndDate>:
     canvas:
         Scale:
@@ -34,6 +42,11 @@
             pos: self.x, self.y
             size: self.width, self.height
             source: 'assets/background.jpg'
+
+    BtConnection:
+        id: bt_connection
+        pos: root.width - 100, root.height - 100
+        size: 80, 80
 
     TimeAndDate:
         id: time_and_date

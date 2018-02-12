@@ -1,4 +1,5 @@
 import time
+import bluetooth
 
 from kivy.app import App
 from kivy.animation import Animation
@@ -15,6 +16,10 @@ Window.size = (720, 480)
 
 key = 'cbb50b1f23a2230b10ccf6a3d8504fb0'
 
+class BtConnection(Widget):
+    connected = ObjectProperty(None)
+
+
 class TimeAndDate(Widget):
     time = ObjectProperty(None)
     date = ObjectProperty(None)
@@ -23,7 +28,7 @@ class TimeAndDate(Widget):
 
     def update(self, dt):
         self.time = time.strftime('%H:%M')
-        self.date = time.strftime('%A, %d %B')
+        self.date = time.strftime('%A, %d %B %Y')
 
 
 class HeadunitWidget(Widget):
