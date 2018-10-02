@@ -2,10 +2,15 @@
 
 <BtConnection>:
     canvas:
+        Scale:
+            origin: self.center_x, self.center_y
+            x: self.scale
+            y: self.scale
+
         Rectangle:
             pos: self.x, self.y
             size: self.width, self.height
-            source: 'assets/wifi.png'
+            source: 'assets/bluetooth.png'
 
 
 <TimeAndDate>:
@@ -36,6 +41,7 @@
 
 <HeadunitWidget>:
     time_and_date: time_and_date
+    bt_connection: bt_connection
 
     canvas:
         Rectangle:
@@ -45,8 +51,8 @@
 
     BtConnection:
         id: bt_connection
-        pos: root.width - 100, root.height - 100
-        size: 80, 80
+        pos: root.width - 54, root.height - 84
+        size: 34, 64
 
     TimeAndDate:
         id: time_and_date

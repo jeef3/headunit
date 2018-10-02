@@ -18,6 +18,7 @@ key = 'cbb50b1f23a2230b10ccf6a3d8504fb0'
 
 class BtConnection(Widget):
     connected = ObjectProperty(None)
+    scale = NumericProperty(1)
 
 
 class TimeAndDate(Widget):
@@ -33,6 +34,7 @@ class TimeAndDate(Widget):
 
 class HeadunitWidget(Widget):
     anim = 0
+    bt_connected_anim = 0
     greeting = StringProperty('صباح الخير')
     lang = StringProperty('ar')
     is_greeting_visible = BooleanProperty(False)
@@ -47,6 +49,9 @@ class HeadunitWidget(Widget):
         else:
             self.show_greeting()
             self.is_greeting_visible = True
+
+    def handle_bt_connected(self, dt):
+        self.bt_connected()
 
 
     def hide_greeting(self):
@@ -65,6 +70,13 @@ class HeadunitWidget(Widget):
         self.anim &= Animation(y=dp(150), duration=0.3, t='in_out_cubic')
         self.anim.start(self.time_and_date)
 
+    def bt_connected(self):
+        if (self.bt_connected_anim):
+            self.bt_connected_anim.cancel(self.bt_connection)
+
+        self.anim = Animation(scale=0.6, duration=0.3, t='in_out_cubic')
+        self.anim.start(self.bt_connection)
+
 
 class HeadunitApp(App):
 
@@ -73,6 +85,7 @@ class HeadunitApp(App):
 
         Clock.schedule_interval(app.update, 1.0 / 60.0)
         Clock.schedule_once(app.toggle)
+        Clock.schedule_once(app.handle_bt_connected, 3)
         Clock.schedule_once(app.toggle, 10)
 
         return app

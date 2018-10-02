@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Ask for sudo first
+sudo -v
+
+info() { printf "  [ \033[00;34m..\033[0m ] $1\n"; }
+success() { printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"; }
+
+info "Installing..."
+
+# TODO: Install Git?
+#
+# TODO: Install app
+#
+# TODO: Set-up RTC
+#
+# TODO: Update /etc/rc.local to start app on start
+/usr/bin/kivy /path/to/my/app.py &
+
+# Copy SSH keys for login
+ssh-copy-id pi
